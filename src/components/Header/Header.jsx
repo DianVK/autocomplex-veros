@@ -4,6 +4,7 @@ import { BiMenuAltRight, BiPhoneCall } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { headerVariants, getMenuStyles } from "../../utils/motion";
 import useHeaderShadow from "../../hooks/useHeaderShadow";
+import logo from "./icon.png"
 
 const Header = () => {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
       style={{ boxShadow: headerShadow }}
     >
       <div className={`flexCenter innerWidth ${css.container}`}>
-      <div className={`${css.name}`}>Автокомплекс "ВЕРОС"</div>
+      <div className={`${css.name}`}><img src={logo} width="15%" alt="ВЕРОС"/>Автокомплекс "ВЕРОС"</div>
 
         <ul
           style={getMenuStyles(menuOpened)}
