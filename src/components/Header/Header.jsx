@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import css from "./Header.module.scss";
-import { BiMenuAltRight, BiPhoneCall } from "react-icons/bi";
+import { BiPhoneCall, BiMenuAltRight } from "react-icons/bi";
 import { motion } from "framer-motion";
-import { headerVariants, getMenuStyles } from "../../utils/motion";
+import { getMenuStyles, headerVariants } from "../../utils/motion";
+import useOutsideAlerter from "../../hooks/useOutsideAlerter";
 import useHeaderShadow from "../../hooks/useHeaderShadow";
 import logo from "./icon.png"
 
 const Header = () => {
+  const menuRef = useRef(null);
   const [menuOpened, setMenuOpened] = useState(false);
   const headerShadow = useHeaderShadow();
+
+  //to handle click outside of sidebar on mobile
+  useOutsideAlerter({
+    menuRef,
+    setMenuOpened,
+  });
   return (
     <motion.div
       initial="hidden"
@@ -16,7 +24,7 @@ const Header = () => {
       variants={headerVariants}
       viewport={{ once: false, amount: 0.25 }}
       className={`paddings ${css.wrapper}`}
-      style={{ boxShadow: headerShadow }}
+    style={{ boxShadow: headerShadow }}
     >
       <div className={`flexCenter innerWidth ${css.container}`}>
       <div className={`${css.name}`}><img src={logo} width="15%" alt="ВЕРОС"/>Автокомплекс "ВЕРОС"</div>
@@ -43,6 +51,7 @@ const Header = () => {
           <a href="tel:+359894335652"><BiPhoneCall size={"40px"} /></a>
           </li>
         </ul>
+
         <div
           onClick={() => setMenuOpened((prev) => !prev)}
           className={` ${css.menuIcon}`}

@@ -1,7 +1,6 @@
-@import "./contants.scss";
-
-.container {
-    overflow-x: clip ;
+@import './contants.scss';
+.container{
+    overflow-x: clip;
     position: relative;
-    color: $secondary;
+    color: $primary;
 }
