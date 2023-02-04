@@ -12,9 +12,12 @@
         position: relative;
         justify-content: space-between;
         font-weight: 500;
+        color: rgb(255, 255, 255);
         .name {
             font-size: 1.5rem;
             font-weight: 500;
+            color: white
+            
         }
         .menu {
             @media (max-width: $sm), (max-width: $md) {
@@ -28,6 +31,7 @@
                 width: 50%;
                 min-width: 15rem;
                 background: white;
+                color: black;
                 padding: 2rem;
                 display: flex;
                 border-radius: 2rem;
